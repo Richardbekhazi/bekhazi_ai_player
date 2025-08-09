@@ -9,10 +9,10 @@ def train_agent(timesteps: int = 10000):
     The trained model will be saved to the current directory.
     """
     # Create environment. Use headless=False to see the browser while training.
-    env = BekhaziGameEnv(headless=True)
+    env = BekhaziGameEnv(headless=False)
     # Optionally check that the environment follows the Gym API
     # check_env(env)
-    model = DQN('CnnPolicy', env, verbose=1, tensorboard_log='./logs')
+    model = DQN('CnnPolicy', env, verbose=1)
     model.learn(total_timesteps=timesteps)
     model.save('bekhazi_agent')
     env.close()
